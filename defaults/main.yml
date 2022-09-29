@@ -1,0 +1,8 @@
+---
+
+composer_install_dir: /usr/local/bin
+composer_bin_file: "{{ composer_install_dir }}/composer.phar"
+composer_bin_link: "{{ composer_install_dir }}/composer"
+composer_self_update: false
+composer_force_update: false
+composer_version: 1.10.26

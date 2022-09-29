@@ -1,0 +1,46 @@
+---
+
+- name: Install required packages
+  ansible.builtin.package:
+    name:
+      - curl
+      - git
+      - unzip
+      - php
+      - php-json
+    state: present
+
+- name: Download composer
+  ansible.builtin.get_url:
+    url: https://getcomposer.org/installer
+    dest: /tmp/installer
+    mode: 0700
+
+- name: Check if composer is already installed
+  ansible.builtin.stat:
+    path: "{{ composer_install_dir }}/composer.phar"
+  register: composer_binary
+
+- name: Install composer
+  ansible.builtin.command: php -d allow_url_fopen=1 /tmp/installer --install-dir={{ composer_install_dir }} --version={{ composer_version }}
+  when: (not composer_binary.stat.exists) or (composer_force_update)
+
+- name: Link composer.phar to composer
+  ansible.builtin.file:
+    src: "{{ composer_install_dir }}/composer.phar"
+    dest: "{{ composer_install_dir }}/composer"
+    state: link
+  when: (not composer_binary.stat.exists) or (composer_force_update)
+
+- name: Make composer executable
+  ansible.builtin.file:
+    path: "{{ composer_install_dir }}/composer.phar"
+    mode: a+x
+    state: file
+  when: (not composer_binary.stat.exists) or (composer_force_update)
+
+- name: Update to the latest version
+  ansible.builtin.command: "{{ composer_install_dir }}/composer self-update"
+  register: _composer_self_update
+  changed_when: "'Updating to version' in _composer_self_update.stdout"
+  when: composer_self_update
