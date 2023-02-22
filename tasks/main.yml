@@ -6,8 +6,6 @@
       - curl
       - git
       - unzip
-      - php
-      - php-json
     state: present
 
 - name: Download composer
