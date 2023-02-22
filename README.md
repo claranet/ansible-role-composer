@@ -13,8 +13,8 @@ Install and configure Composer
 
 ## :warning: Requirements
 
-Ansible >= 2.10
-PHP
+* Ansible >= 2.10
+* PHP
 
 ## :zap: Installation
 
