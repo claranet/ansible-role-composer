@@ -14,19 +14,16 @@ galaxy_info:
   platforms:
     - name: Centos
       versions:
-        - 7
-        - 8
+        - all
     - name: EL
       versions:
-        - 7
-        - 8
+        - all
     - name: Amazon
       versions:
         - all
     - name: Debian
       versions:
-        - 10
-        - 11
+        - all
     - name: Ubuntu
       versions:
         - 18.04

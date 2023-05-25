@@ -26,7 +26,7 @@ jobs:
           JSON="${JSON%?}"
           JSON="$JSON]"
 
-          echo "::set-output name=scenarios::$(echo $JSON)"
+          echo "name=scenarios::$(echo $JSON)" >> $GITHUB_OUTPUT
 
   lint:
     name: Lint
@@ -58,9 +58,6 @@ jobs:
           - image: "amazonlinux"
             tag: "latest"
           - name: "redhat"
-            image: "registry.access.redhat.com/rhel7"
-            tag: "latest"
-          - name: "redhat"
             image: "registry.access.redhat.com/ubi8/ubi"
             tag: "latest"
           - image: "debian"
@@ -70,9 +67,6 @@ jobs:
           - name: "centos"
             image: "quay.io/centos/centos"
             tag: "centos7"
-          - name: "centos"
-            image: "quay.io/centos/centos"
-            tag: "stream7"
           - name: "centos"
             image: "quay.io/centos/centos"
             tag: "centos8"
