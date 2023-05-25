@@ -3,7 +3,7 @@
 - name: Install required packages
   ansible.builtin.package:
     name:
-      - curl
+      - curl-minimal
       - git
       - unzip
     state: present
