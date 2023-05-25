@@ -27,7 +27,6 @@ jobs:
           JSON="$JSON]"
 
           echo "::set-output name=scenarios::$(echo $JSON)"
-          # echo "name=scenarios::$(echo $JSON)" >> $GITHUB_OUTPUT
 
   lint:
     name: Lint
