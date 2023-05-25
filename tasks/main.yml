@@ -3,7 +3,6 @@
 - name: Install required packages
   ansible.builtin.package:
     name:
-      - curl
       - git
       - unzip
     state: present

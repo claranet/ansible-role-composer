@@ -12,6 +12,9 @@ galaxy_info:
   galaxy_tags: ['claranet', 'composer']
 
   platforms:
+    - name: Centos
+      versions:
+        - all
     - name: EL
       versions:
         - all
@@ -23,6 +26,8 @@ galaxy_info:
         - all
     - name: Ubuntu
       versions:
-        - all
+        - 18.04
+        - 20.04
+        - 22.04
 
 dependencies: []

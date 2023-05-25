@@ -15,6 +15,7 @@ Install and configure Composer
 
 * Ansible >= 2.10
 * PHP
+* cURL
 
 ## :zap: Installation
 
