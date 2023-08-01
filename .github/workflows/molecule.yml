@@ -20,7 +20,9 @@ jobs:
           JSON="["
 
           for s in $(find molecule -mindepth 1 -maxdepth 1 -type d -exec basename "{}" \;); do
-            JSON="${JSON}\"${s}\","
+              if [ -e "molecule/${s}/molecule.yml" ]; then
+                  JSON="${JSON}\"${s}\","
+              fi
           done
 
           JSON="${JSON%?}"
@@ -57,30 +59,16 @@ jobs:
         config:
           - image: "amazonlinux"
             tag: "latest"
-          - name: "redhat"
-            image: "registry.access.redhat.com/ubi8/ubi"
+          - image: "registry.access.redhat.com/ubi8/ubi"
             tag: "latest"
-          - image: "debian"
-            tag: "10"
           - image: "debian"
             tag: "11"
           - image: "debian"
             tag: "12"
-          - name: "centos"
-            image: "quay.io/centos/centos"
-            tag: "centos7"
-          - name: "centos"
-            image: "quay.io/centos/centos"
+          - image: "quay.io/centos/centos"
             tag: "centos8"
-          - name: "centos"
-            image: "quay.io/centos/centos"
+          - image: "quay.io/centos/centos"
             tag: "stream8"
-          - name: "ubuntu"
-            image: "ubuntu"
-            tag: "18.04"
-          - name: "ubuntu"
-            image: "ubuntu"
-            tag: "20.04"
           - image: "ubuntu"
             tag: "22.04"
 
