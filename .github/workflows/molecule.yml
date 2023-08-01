@@ -64,6 +64,8 @@ jobs:
             tag: "10"
           - image: "debian"
             tag: "11"
+          - image: "debian"
+            tag: "12"
           - name: "centos"
             image: "quay.io/centos/centos"
             tag: "centos7"
