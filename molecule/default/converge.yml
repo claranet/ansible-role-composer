@@ -1,5 +1,13 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    php_enable_webserver: false
+    php_opcache_enable: "0"
+    php_packages:
+      - php
+      - php-json
+      - php-apcu
   roles:
+    - role: geerlingguy.php
     - role: claranet.composer
